@@ -32,12 +32,7 @@ final _passwordcontroller= TextEditingController();
                   hintText:'Username',
                 ),
                 validator: (value){
-                  // if(_isDataMatched)
-                  // {
-                  //   return null;
-                  // }else{
-                  //   return 'error';
-                  // }
+                
                     
                 if(value==null||value.isEmpty)
                 {
