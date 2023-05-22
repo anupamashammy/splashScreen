@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:newproject/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -80,7 +82,7 @@ final _passwordcontroller= TextEditingController();
 
                   checklogin(context);
                 }else{
-                  print('Data is empty');
+                  log('Data is empty');
                 }
                // checklogin(context);
               },
@@ -98,21 +100,22 @@ final _passwordcontroller= TextEditingController();
  
  void checklogin(BuildContext ctx)async{
   {
-    final _username=_usernamecontroller.text;
-    final _password = _passwordcontroller.text;
-    if(_username == _password)
+    final username=_usernamecontroller.text;
+    final password = _passwordcontroller.text;
+    if(username == password)
     {
-      print('username correct');
+      log('username correct');
       //goto home
 
-final _sharedprefs = await SharedPreferences.getInstance();
-await _sharedprefs.setBool(SAVE_KEY_NAME, true);
+final sharedprefs = await SharedPreferences.getInstance();
+await sharedprefs.setBool(SAVE_KEY_NAME, true);
 
-Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder:(ctx1)=>Screenhome() ));
+// ignore: use_build_context_synchronously
+Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder:(ctx1)=>const Screenhome() ));
 
     }else{
 
-print('username doesnot correct');
+log('username doesnot correct');
     }
   }
 }

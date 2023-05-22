@@ -91,10 +91,11 @@ class  Screenhome extends StatelessWidget {
 
   signoout(BuildContext ctx)async{
 
-    final _sharedprefs = await SharedPreferences.getInstance();
-    await _sharedprefs.clear();
+    final sharedprefs = await SharedPreferences.getInstance();
+    await sharedprefs.clear();
 
   
+   // ignore: use_build_context_synchronously
    Navigator.of(ctx).pushAndRemoveUntil(
     MaterialPageRoute(builder:(ctx1)=>Screenlogin()), ((route) => false)
    );

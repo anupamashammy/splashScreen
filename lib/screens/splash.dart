@@ -38,7 +38,8 @@ Widget build(BuildContext context){
 }
 
  Future<void> gotologin()async{
-   await Future.delayed(Duration(seconds: 3));
+   await Future.delayed(const Duration(seconds: 3));
+  // ignore: use_build_context_synchronously
   Navigator.of(context).pushReplacement
   (MaterialPageRoute
   (builder: (context) => Screenlogin(),
@@ -47,13 +48,14 @@ Widget build(BuildContext context){
 }
 
 Future<void>checkUserloggedIn() async{
-  final _sharedprefs =await SharedPreferences.getInstance();
- final _userloggedin = _sharedprefs.getBool(SAVE_KEY_NAME);
- if(_userloggedin ==null)
+  final sharedprefs =await SharedPreferences.getInstance();
+ final userloggedin = sharedprefs.getBool(SAVE_KEY_NAME);
+ if(userloggedin ==null)
 {
 gotologin();
 }else{
-  Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(ctx1)=>Screenhome())
+  // ignore: use_build_context_synchronously
+  Navigator.of(context).pushReplacement(MaterialPageRoute(builder:(ctx1)=>const Screenhome())
   );
 }
 
